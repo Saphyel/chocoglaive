@@ -1,7 +1,7 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
-import ChocoboNew from './components/ChocoboNew';
-import ChocoboList from './components/ChocoboList';
+import ChocoboNew from '../components/ChocoboNew';
+import ChocoboList from '../components/ChocoboList';
 
 const Stable = () =>
   <main>

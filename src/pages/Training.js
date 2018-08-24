@@ -1,6 +1,6 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
-import ContentTable from './components/ContentTable';
+import ContentTable from '../components/ContentTable';
 
 const Training = () =>
   <main>

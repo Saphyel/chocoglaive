@@ -1,6 +1,6 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
-import AdvanceCard from './components/AdvanceCard';
+import AdvanceCard from '../components/AdvanceCard';
 
 const Birthplace = () => (
   <main>
