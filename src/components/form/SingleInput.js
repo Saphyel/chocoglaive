@@ -14,6 +14,7 @@ const SingleInput = (props) =>
       type={props.inputType}
       placeholder={props.placeholder}
       value={props.content}
+      required={props.required}
       inputProps={{
         'aria-label': 'Description',
       }}

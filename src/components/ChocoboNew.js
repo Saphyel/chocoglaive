@@ -47,12 +47,14 @@ class ChocoboNew extends React.Component {
               title={'HP'}
               name={'hp'}
               placeholder={'2000'}
+              required={true}
               onChange={this.handleChange}/>
             <SingleInput
               inputType={'number'}
               title={'Attack'}
               name={'attack'}
               placeholder={'1000'}
+              required={true}
               onChange={this.handleChange}/>
             <Dropdown
               title={'Colour'}
