@@ -40,6 +40,12 @@ const Leaders = () => (
           'Olga Boore – Meteorshard Donations',
           'Norris Dweller – 20% Munitions Discount'
         ]}/>
+      <BasicCard
+        title='Norduscaen Garrison'
+        content={[
+          'Aiden Lunder – Item shop Opening',
+          'Killian West – Gil Discount'
+        ]}/>
     </Grid>
   </main>
 )

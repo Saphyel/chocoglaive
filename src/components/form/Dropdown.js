@@ -15,9 +15,7 @@ const Dropdown = props =>
       defaultValue={props.selectedOption}>
       {props.options.map(opt => {
         return (
-          <option
-            key={opt}
-            value={opt}>{opt}</option>
+          <option key={opt} value={opt}>{opt}</option>
         );
       })}
     </NativeSelect>

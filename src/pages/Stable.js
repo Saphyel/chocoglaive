@@ -48,7 +48,8 @@ class Stable extends React.Component {
     return (
       <main>
         <Grid container spacing={40} alignItems="flex-end">
-          <ChocoboList items={this.state.stable}/>
+          <ChocoboList items={this.state.stable}
+            header={['HP', 'Attack', 'Speed', 'Colour', 'Value', 'Manage']}/>
           <ChocoboNew addNewItem={this.addNewItem}/>
         </Grid>
       </main>
