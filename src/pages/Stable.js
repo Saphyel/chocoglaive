@@ -2,7 +2,7 @@ import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import ChocoboNew from '../components/ChocoboNew';
 import ChocoboList from '../components/ChocoboList';
-import { get, keys, set } from "idb-keyval";
+import { get, keys, set, del } from "idb-keyval";
 
 const uuidv1 = require('uuid/v1');
 
@@ -44,12 +44,24 @@ class Stable extends React.Component {
     });
   };
 
+  DeleteItem = (id) => {
+    del(id);
+
+    this.setState(prevState => {
+      prevState.stable = prevState.stable.filter(chocobo => chocobo.id !== id);
+      return {stable: prevState.stable};
+    });
+  };
+
   render() {
     return (
       <main>
         <Grid container spacing={40} alignItems="flex-end">
-          <ChocoboList items={this.state.stable}
-            header={['HP', 'Attack', 'Speed', 'Colour', 'Value', 'Manage']}/>
+          <ChocoboList
+            items={this.state.stable}
+            DeleteItem={this.DeleteItem}
+            header={['HP', 'Attack', 'Speed', 'Colour', 'Value', 'Manage']}
+          />
           <ChocoboNew addNewItem={this.addNewItem}/>
         </Grid>
       </main>
