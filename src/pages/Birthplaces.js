@@ -1,7 +1,7 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import AdvanceCard from '../components/AdvanceCard';
-import birthplaces from '../data/birthplaces.json';
+import {BirthdayService} from '../services/BirthdayService';
 
 const Birthplaces = () => (
   <main>
@@ -12,7 +12,7 @@ const Birthplaces = () => (
       alignItems="stretch"
       justify="center"
     >
-      {birthplaces.map(birthplace =>
+      {BirthdayService.fetchAll().map(birthplace =>
         <AdvanceCard
           key={birthplace.id}
           title={birthplace.title}
