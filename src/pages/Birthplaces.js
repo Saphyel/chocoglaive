@@ -26,6 +26,7 @@ class Birthplaces extends React.Component {
               key={birthplace.id}
               title={birthplace.title}
               subtitle={birthplace.subtitle}
+              path={birthplace.path}
               requirement={birthplace.requirement}
               content={birthplace.content}
             />

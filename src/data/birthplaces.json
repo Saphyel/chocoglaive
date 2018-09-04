@@ -2,6 +2,7 @@
     "id": 1,
     "title": "Lestallum",
     "subtitle": "Birthplace of the most aggressive. They are all-out attackers blessed with high power and max HP.",
+    "path": "images/places/comrades.jpg",
     "requirement": "",
     "content": [
       "528 HP",
@@ -16,6 +17,7 @@
     "id": 2,
     "title": "Altissia",
     "subtitle": "Birthplace of resilient people. They are granted bonuses to vitality, spirit and max HP.",
+    "path": "./images/places/comrades.jpg",
     "requirement": "",
     "content": [
       "504 HP",
@@ -30,6 +32,7 @@
     "id": 3,
     "title": "Galahd",
     "subtitle": "Birthplace of offensive specialists. They are blessed with a higher level of power and magic. They are both adept at melee combat and with offensive spells.",
+    "path": "/masterglaive/images/places/comrades.jpg",
     "requirement": "",
     "content": [
       "480 HP",
@@ -44,6 +47,7 @@
     "id": 4,
     "title": "Insomnia",
     "subtitle": "Birthplace of the magical specialists. They are given high magic and high max MP.",
+    "path": "/masterglaive/images/places/comrades.jpg",
     "requirement": "",
     "content": [
       "432 HP",
@@ -58,6 +62,7 @@
     "id": 5,
     "title": "Tenebrae",
     "subtitle": "Birthplace of many blessed with high magic, spirit, and max MP, but deficient in other areas.",
+    "path": "/masterglaive/images/places/comrades.jpg",
     "requirement": "Rematch: The Pyreburner`s Trial",
     "content": [
       "336 HP",
@@ -72,6 +77,7 @@
     "id": 6,
     "title": "Gralea",
     "subtitle": "Birthplace of many blessed with high Power, Vitality, and max HP, but deficient in other areas.",
+    "path": "/masterglaive/images/places/comrades.jpg",
     "requirement": "Final Round: The Bladekeeper`s Trial",
     "content": [
       "600 HP",
