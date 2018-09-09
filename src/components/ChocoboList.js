@@ -31,27 +31,31 @@ class ChocoboList extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleClickOpen = () => {
-    this.setState({ open: true });
-  };
+  handleClickOpen = () => this.setState({open: true});
 
-  handleClose = () => {
-    this.setState({ open: false });
-  };
+  handleClose = () => this.setState({open: false});
 
   handleChange(event) {
     this.setState({[event.target.name]: event.target.value});
   }
 
+  validChocobo = () => {
+    if (this.state.hp === '') return false;
+    if (this.state.attack === '') return false;
+    return true;
+  };
+
   handleSubmit(event) {
     event.preventDefault();
-    this.props.addNewItem(
-      this.state.hp,
-      this.state.attack,
-      this.state.colour,
-      this.state.speed,
-    );
-    this.handleClose();
+    if (this.validChocobo()) {
+      this.props.addNewItem(
+        this.state.hp,
+        this.state.attack,
+        this.state.colour,
+        this.state.speed,
+      );
+      this.handleClose();
+    }
   }
 
   calcSpeed(value) {
@@ -73,7 +77,8 @@ class ChocoboList extends React.Component {
   calculator(chocobo) {
     const hp = parseInt(chocobo.hp);
     const attack = parseInt(chocobo.attack);
-    const speed = this.calcSpeed(chocobo.speed)
+    const speed = this.calcSpeed(chocobo.speed);
+
     return Math.round((hp / 20) + (attack / 10) + speed);
   }
 
@@ -85,9 +90,9 @@ class ChocoboList extends React.Component {
           <Table>
             <TableHead>
               <TableRow>
-              {this.props.header.map(header =>
-                <TableCell key={header}>{header}</TableCell>
-              )}
+                {this.props.header.map(header =>
+                  <TableCell key={header}>{header}</TableCell>
+                )}
               </TableRow>
             </TableHead>
             <TableBody>
@@ -111,14 +116,16 @@ class ChocoboList extends React.Component {
                 </TableRow>
               )}
             </TableBody>
-          </Table><Button variant="raised" size="large" color="primary" onClick={this.handleClickOpen}>
+          </Table>
+          <Button
+            variant="raised"
+            size="large"
+            color="primary"
+            onClick={this.handleClickOpen}
+          >
             New chocobo
           </Button>
-          <Dialog
-            open={this.state.open}
-            onClose={this.handleClose}
-            aria-labelledby="form-dialog-title"
-          >
+          <Dialog open={this.state.open} onClose={this.handleClose}>
             <DialogTitle>Add a new chocobo</DialogTitle>
             <Grid
               container
@@ -127,54 +134,59 @@ class ChocoboList extends React.Component {
               alignItems="stretch"
               direction="row"
             >
-              <SingleInput
-                inputType={'number'}
-                title={'HP'}
-                name={'hp'}
-                placeholder={'2000'}
-                required={true}
-                onChange={this.handleChange}
-              />
-              <SingleInput
-                inputType={'number'}
-                title={'Attack'}
-                name={'attack'}
-                placeholder={'1000'}
-                required={true}
-                onChange={this.handleChange}
-              />
-              <Dropdown
-                title={'Colour'}
-                name={'colour'}
-                options={['Red', 'Blue', 'Yellow', 'Black', 'Green']}
-                selectedOption={this.state.colour}
-                onChange={this.handleChange}
-              />
-              <Dropdown
-                title={'Speed'}
-                name={'speed'}
-                options={['D', 'C', 'B', 'A', 'A+']}
-                onChange={this.handleChange}
-                selectedOption={this.state.speed}
-              />
-              <Grid item xs={4}>
-                <Button
-                  variant="contained"
-                  color="primary"
-                  onClick={this.handleSubmit}
-                >
-                  Add
-                </Button>
-              </Grid>
-              <Grid item xs={4}>
-                <Button
-                  variant="contained"
-                  color="secondary"
-                  onClick={this.handleClose}
-                >
-                  Cancel
-                </Button>
-              </Grid>
+              <form id="chocobo" name="chocobo" onSubmit={this.handleSubmit}>
+                <SingleInput
+                  inputType={'number'}
+                  title={'HP'}
+                  name={'hp'}
+                  placeholder={'2000'}
+                  required={true}
+                  ref="chocobo"
+                  onChange={this.handleChange}
+                />
+                <SingleInput
+                  inputType={'number'}
+                  title={'Attack'}
+                  name={'attack'}
+                  placeholder={'1000'}
+                  required={true}
+                  ref="chocobo"
+                  onChange={this.handleChange}
+                />
+                <Dropdown
+                  title={'Colour'}
+                  name={'colour'}
+                  options={['Red', 'Blue', 'Yellow', 'Black', 'Green']}
+                  selectedOption={this.state.colour}
+                  onChange={this.handleChange}
+                />
+                <Dropdown
+                  title={'Speed'}
+                  name={'speed'}
+                  options={['D', 'C', 'B', 'A', 'A+']}
+                  onChange={this.handleChange}
+                  selectedOption={this.state.speed}
+                />
+                <Grid item xs={4}>
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    type="submit"
+                    onClick={this.handleSubmit}
+                  >
+                    Add
+                  </Button>
+                </Grid>
+                <Grid item xs={4}>
+                  <Button
+                    variant="contained"
+                    color="secondary"
+                    onClick={this.handleClose}
+                  >
+                    Cancel
+                  </Button>
+                </Grid>
+              </form>
             </Grid>
           </Dialog>
         </Paper>

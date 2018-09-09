@@ -19,6 +19,7 @@ class Birthplaces extends React.Component {
 
   render() {
     const {birthplaces} = this.state;
+
     return (
       <main>
         <Grid container spacing={8} alignItems="stretch">
