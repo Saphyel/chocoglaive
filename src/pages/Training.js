@@ -18,10 +18,11 @@ class Training extends React.Component {
   }
 
   render() {
+    const {training} = this.state;
     return (
       <main>
         <Grid container spacing={8} alignItems="stretch" justify="center">
-          {this.state.training.map(train =>
+          {training.map(train =>
             <ContentTable
               key={train.id}
               title={train.title}

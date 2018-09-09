@@ -7,7 +7,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 
 const SingleInput = props =>
   <Grid item xs={5}>
-    <FormControl margin="nromal">
+    <FormControl margin="normal">
       <InputLabel htmlFor={props.name}>{props.title}</InputLabel>
       <Input
         id={props.name}

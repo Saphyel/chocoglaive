@@ -54,6 +54,8 @@ class Stable extends React.Component {
   };
 
   render() {
+    const {stable} = this.state;
+
     return (
       <main>
         <Grid
@@ -63,7 +65,7 @@ class Stable extends React.Component {
           alignItems="stretch"
         >
           <ChocoboList
-            items={this.state.stable}
+            items={stable}
             DeleteItem={this.DeleteItem}
             header={['HP', 'Attack', 'Speed', 'Colour', 'Value', 'Manage']}
           />

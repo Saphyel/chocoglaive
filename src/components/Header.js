@@ -12,8 +12,7 @@ const Header = () =>
       </Typography>
       <MenuLink link="/" message="Birthplace status" />
       <MenuLink link="/leaders" message="City leaders" />
-      <MenuLink link="/stable" message="Stable" />
-      <MenuLink link="/training" message="Training" />
+      <MenuLink link="/chocobos" message="Chocobos" />
     </Toolbar>
   </AppBar>;
 

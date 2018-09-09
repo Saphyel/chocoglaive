@@ -18,10 +18,12 @@ class Leaders extends React.Component {
   }
 
   render() {
+    const {leaders} = this.state;
+
     return (
       <main>
         <Grid container spacing={8} alignItems="stretch">
-          {this.state.leaders.map(leader =>
+          {leaders.map(leader =>
             <BasicCard
               key={leader.id}
               title={leader.title}

@@ -18,10 +18,11 @@ class Birthplaces extends React.Component {
   }
 
   render() {
+    const {birthplaces} = this.state;
     return (
       <main>
         <Grid container spacing={8} alignItems="stretch">
-          {this.state.birthplaces.map(birthplace =>
+          {birthplaces.map(birthplace =>
             <AdvanceCard
               key={birthplace.id}
               title={birthplace.title}
