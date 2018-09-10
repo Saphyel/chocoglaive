@@ -1,13 +1,13 @@
-import React from 'react';
-import { Route } from 'react-router-dom';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Birthplaces from './pages/Birthplaces';
-import Leaders from './pages/Leaders';
-import Chocobos from './pages/Chocobos';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
+import React from "react";
+import {Route} from "react-router-dom";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import Birthplaces from "./pages/Birthplaces";
+import Leaders from "./pages/Leaders";
+import Chocobos from "./pages/Chocobos";
+import Toolbar from "@material-ui/core/Toolbar";
+import Typography from "@material-ui/core/Typography";
 import AppBar from "@material-ui/core/AppBar";
-import MenuLink from './components/MenuLink';
+import MenuLink from "./components/MenuLink";
 
 const App = () =>
   <div id="main">

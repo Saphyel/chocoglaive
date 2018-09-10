@@ -1,7 +1,7 @@
-import React from 'react';
-import Grid from '@material-ui/core/Grid';
-import AdvanceCard from '../components/AdvanceCard';
-import {BirthdayService} from '../services/BirthdayService';
+import React from "react";
+import Grid from "@material-ui/core/Grid";
+import AdvanceCard from "../components/AdvanceCard";
+import {BirthdayService} from "../services/BirthdayService";
 
 class Birthplaces extends React.Component {
   constructor() {

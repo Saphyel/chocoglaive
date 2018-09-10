@@ -1,14 +1,14 @@
-import React from 'react';
-import AppBar from '@material-ui/core/AppBar';
-import Grid from '@material-ui/core/Grid';
-import ContentTable from '../components/ContentTable';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
-import ChocoboList from '../components/ChocoboList';
-import {TrainingService} from '../services/TrainingService';
+import React from "react";
+import AppBar from "@material-ui/core/AppBar";
+import Grid from "@material-ui/core/Grid";
+import ContentTable from "../components/ContentTable";
+import Tabs from "@material-ui/core/Tabs";
+import Tab from "@material-ui/core/Tab";
+import ChocoboList from "../components/ChocoboList";
+import {TrainingService} from "../services/TrainingService";
 import {get, keys, set, del} from "idb-keyval";
 
-const uuidv1 = require('uuid/v1');
+const uuidv1 = require("uuid/v1");
 
 function Stable(props) {
   return (
@@ -16,7 +16,7 @@ function Stable(props) {
       <ChocoboList
         DeleteItem={props.delete}
         addNewItem={props.add}
-        header={['HP', 'Attack', 'Speed', 'Colour', 'Value', 'Manage']}
+        header={["HP", "Attack", "Speed", "Colour", "Value", "Manage"]}
         items={props.children}
       />
     </Grid>
@@ -43,7 +43,7 @@ class Chocobos extends React.Component {
   constructor() {
     super();
     this.state = {
-      value: 'stable',
+      value: "stable",
       stable: [],
       training: []
     };
@@ -105,8 +105,8 @@ class Chocobos extends React.Component {
             <Tab value="training" label="Training" />
           </Tabs>
         </AppBar>
-        {value === 'stable' && <Stable delete={this.DeleteItem} add={this.addNewItem}>{stable}</Stable>}
-        {value === 'training' && <Training>{training}</Training>}
+        {value === "stable" && <Stable delete={this.DeleteItem} add={this.addNewItem}>{stable}</Stable>}
+        {value === "training" && <Training>{training}</Training>}
       </main>
     );
   }

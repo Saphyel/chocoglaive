@@ -1,6 +1,6 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { NavLink } from "react-router-dom";
+import React from "react";
+import PropTypes from "prop-types";
+import {NavLink} from "react-router-dom";
 import Button from "@material-ui/core/Button";
 
 const MenuLink = props =>

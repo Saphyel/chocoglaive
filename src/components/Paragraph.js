@@ -1,8 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Typography from '@material-ui/core/Typography';
+import React from "react";
+import PropTypes from "prop-types";
+import Typography from "@material-ui/core/Typography";
 
-const uuidv1 = require('uuid/v1');
+const uuidv1 = require("uuid/v1");
 
 const Paragraph = props =>
   <Typography component="p">

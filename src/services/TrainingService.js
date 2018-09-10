@@ -1,4 +1,4 @@
-import training from '../data/training.json';
+import training from "../data/training.json";
 
 export const TrainingService = {
     fetchAll

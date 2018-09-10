@@ -1,4 +1,4 @@
-import birthplaces from '../data/birthplaces.json';
+import birthplaces from "../data/birthplaces.json";
 
 export const BirthdayService = {
     fetchAll

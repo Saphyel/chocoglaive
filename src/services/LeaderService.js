@@ -1,4 +1,4 @@
-import leaders from '../data/leaders.json';
+import leaders from "../data/leaders.json";
 
 export const LeaderService = {
     fetchAll
