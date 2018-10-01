@@ -1,15 +1,21 @@
 {
-  "short_name": "MasterGlaive",
-  "name": "MasterGlaive, Unofficial final fantasy XV Comrades app",
+  "name": "MasterGlaive",
+  "description": "MasterGlaive, Unofficial final fantasy XV Comrades app",
   "icons": [
     {
-      "src": "favicon.ico",
+      "src": "/masterglaive/favicon.ico",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
     }
   ],
-  "start_url": "./index.html",
+  "short_name": "MasterGlaive",
+  "start_url": "/masterglaive/",
   "display": "standalone",
   "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "background_color": "#ffffff",
+  "serviceworker": {
+    "src": "sw.js",
+    "scope": "/masterglaive/",
+    "update_via_cache": "none"
+  },
 }
