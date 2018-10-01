@@ -1,5 +1,5 @@
 Please select one of this boxes!
 
-[ ] Bug?
-[ ] New feature?
-[ ] UX/UI Improvements
+- [ ] Bug?
+- [ ] New feature?
+- [ ] UX/UI Improvements
