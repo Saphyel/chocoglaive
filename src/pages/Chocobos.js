@@ -6,9 +6,7 @@ import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import ChocoboList from "../components/ChocoboList";
 import {TrainingService} from "../services/TrainingService";
-import {get, keys, set, del} from "idb-keyval";
-
-const uuidv1 = require("uuid/v1");
+import {ChocoboService} from "../services/ChocoboService";
 
 function Stable(props) {
   return (
@@ -50,13 +48,8 @@ class Chocobos extends React.Component {
   }
 
   async getItems() {
-    let payload = [];
-    const Ids = await keys();
-    for (var i = 0; i < Ids.length; i++) {
-      payload.push({id: Ids[i], chocobo: await get(Ids[i])})
-    }
     return {
-      stable: payload,
+      stable: await ChocoboService.fetchAll(),
       training: await TrainingService.fetchAll()
     };
   }
@@ -66,17 +59,7 @@ class Chocobos extends React.Component {
   }
 
   addNewItem = (hp, attack, colour, speed) => {
-    const payload = {
-      hp: hp,
-      attack: attack,
-      speed: speed,
-      colour: colour
-    };
-
-    let id = uuidv1();
-    let item = {id: id, chocobo: payload};
-    set(id, payload);
-
+    const item = ChocoboService.insert(hp, attack, colour, speed);
     this.setState(prevState => {
       prevState.stable.push(item);
       return {stable: prevState.stable};
@@ -84,7 +67,7 @@ class Chocobos extends React.Component {
   };
 
   DeleteItem = (id) => {
-    del(id);
+    ChocoboService.remove(id);
 
     this.setState(prevState => {
       prevState.stable = prevState.stable.filter(chocobo => chocobo.id !== id);

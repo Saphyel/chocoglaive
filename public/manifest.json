@@ -17,5 +17,5 @@
     "src": "sw.js",
     "scope": "/masterglaive/",
     "update_via_cache": "none"
-  },
+  }
 }
