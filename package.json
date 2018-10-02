@@ -1,6 +1,6 @@
 {
   "name": "masterglaive",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "license": "MIT",
   "homepage": "https://saphyel.github.io/masterglaive",
   "dependencies": {
@@ -14,7 +14,7 @@
   },
   "devDependencies": {
     "gh-pages": "^2.0.0",
-    "react-scripts": "^2.0.2"
+    "react-scripts": "^2.0.3"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -22,6 +22,9 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "deploy": "gh-pages -d build"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
   },
   "browserslist": [
     ">0.2%",
