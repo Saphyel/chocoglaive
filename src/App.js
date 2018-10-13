@@ -14,7 +14,7 @@ const App = () =>
     <CssBaseline />
     <AppBar position="static" color="default">
       <Toolbar>
-        <Typography variant="title" color="inherit" noWrap>
+        <Typography variant="h6" color="inherit" noWrap>
           MasterGlaive
         </Typography>
         <MenuLink link="/" message="Birthplace status" />

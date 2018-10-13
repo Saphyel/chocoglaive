@@ -111,7 +111,7 @@ class ChocoboList extends React.Component {
             </TableBody>
           </Table>
           {this.props.items.length ? null : (
-            <Typography align="center" variant="subheading">
+            <Typography align="center" variant="subtitle1">
               Your stable is empty!
             </Typography>
           )}

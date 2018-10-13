@@ -5,7 +5,7 @@ import Typography from "@material-ui/core/Typography";
 
 const Title = props =>
   <Toolbar variant="dense">
-    <Typography variant="title">{props.children}</Typography>
+    <Typography variant="h6">{props.children}</Typography>
   </Toolbar>;
 
 Title.propTypes = {

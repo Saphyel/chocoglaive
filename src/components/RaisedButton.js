@@ -4,7 +4,7 @@ import Button from "@material-ui/core/Button";
 
 const RaisedButton = props =>
   <Button
-    variant="raised"
+    variant="contained"
     color={props.color}
     size={props.size}
     type={props.type}
