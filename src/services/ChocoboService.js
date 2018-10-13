@@ -1,6 +1,7 @@
-import {get, keys, set, del} from "idb-keyval";
+import {Store, get, keys, set, del} from "idb-keyval";
 
 const uuidv1 = require("uuid/v1");
+const customStore = new Store('saphyel', 'masterglaive');
 
 export const ChocoboService = {
   fetchAll,
@@ -9,20 +10,20 @@ export const ChocoboService = {
   remove
 };
 
-function fetchAll() {
+async function fetchAll() {
   let payload = [];
-  const Ids = keys();
+  const Ids = await keys(customStore);
   for (var i = 0; i < Ids.length; i++) {
-    payload.push({id: Ids[i], chocobo: get(Ids[i])})
+    payload.push({id: Ids[i], chocobo: await fetch(Ids[i])})
   }
   return payload;
 }
 
-function fetch(id) {
-  return get(id);
+async function fetch(id) {
+  return await get(id, customStore);
 }
 
-function insert(hp, attack, colour, speed) {
+async function insert(hp, attack, colour, speed) {
   const id = uuidv1();
   const payload = {
     hp: hp,
@@ -31,13 +32,13 @@ function insert(hp, attack, colour, speed) {
     colour: colour
   };
 
-  set(id, payload);
+  await set(id, payload, customStore);
 
   return {id: id, chocobo: payload};
 }
 
-function remove(id) {
-  del(id);
+async function remove(id) {
+  await del(id, customStore);
 
   return true;
 }
