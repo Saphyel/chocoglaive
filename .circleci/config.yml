@@ -42,7 +42,7 @@ jobs:
           key: modules-{{ checksum "yarn.lock" }}
       - run:
           name: Run tests
-          command: yarn install
+          command: yarn test --ci --coverage
 
   deploy:
     docker:

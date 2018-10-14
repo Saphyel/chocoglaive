@@ -13,7 +13,7 @@ export const ChocoboService = {
 async function fetchAll() {
   let payload = [];
   const Ids = await keys(customStore);
-  for (var i = 0; i < Ids.length; i++) {
+  for (let i = 0; i < Ids.length; i++) {
     payload.push({id: Ids[i], chocobo: await fetch(Ids[i])})
   }
   return payload;
@@ -23,7 +23,7 @@ async function fetch(id) {
   return await get(id, customStore);
 }
 
-async function insert(hp, attack, colour, speed) {
+function insert(hp, attack, colour, speed) {
   const id = uuidv1();
   const payload = {
     hp: hp,
@@ -32,7 +32,7 @@ async function insert(hp, attack, colour, speed) {
     colour: colour
   };
 
-  await set(id, payload, customStore);
+  set(id, payload, customStore);
 
   return {id: id, chocobo: payload};
 }
