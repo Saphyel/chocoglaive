@@ -1,10 +1,23 @@
 version: 2
 jobs:
+  checkout_code:
+    docker:
+      - image: node:8.10-alpine
+    working_directory: /var/www
+    steps:
+      - checkout
+      - save_cache:
+          key: code
+          paths:
+            - /var/www
+
   build:
     docker:
       - image: node:8.10-alpine
     steps:
-      - checkout
+      - restore_cache:
+          keys:
+            - code
       - restore_cache:
           name: Restore Yarn Package Cache
           key: packages-{{ checksum "yarn.lock" }}
@@ -21,7 +34,9 @@ jobs:
     docker:
       - image: node:8.10-alpine
     steps:
-      - checkout
+      - restore_cache:
+          keys:
+            - code
       - restore_cache:
           name: Restore Yarn Package Cache
           key: packages-{{ checksum "yarn.lock" }}
@@ -33,7 +48,9 @@ jobs:
     docker:
       - image: node:8.10-alpine
     steps:
-      - checkout
+      - restore_cache:
+          keys:
+            - code
       - restore_cache:
           name: Restore Yarn Package Cache
           key: packages-{{ checksum "yarn.lock" }}
@@ -41,21 +58,28 @@ jobs:
           name: Install Packages
           command: yarn build
 
+
 workflows:
   version: 2
   build_and_test:
     jobs:
-      - build
+      - checkout_code
+      - build:
+          requires:
+            - checkout_code
       - test:
           requires:
             - build
 
   build_and_deploy:
     jobs:
-      - build::
+      - checkout_code:
           filters:
             branches:
               only: master
+      - build:
+          requires:
+            - checkout_code
       - deploy:
           requires:
             - build
