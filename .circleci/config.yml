@@ -8,7 +8,7 @@ jobs:
       - save_cache:
           key: code
           paths:
-            - /var/www
+            - ./
 
   build:
     docker:
@@ -41,7 +41,7 @@ jobs:
           name: Restore Yarn Package Cache
           key: modules-{{ checksum "yarn.lock" }}
       - run:
-          name: Install Packages
+          name: Run tests
           command: yarn test
 
   deploy:
@@ -55,7 +55,7 @@ jobs:
           name: Restore Yarn Package Cache
           key: modules-{{ checksum "yarn.lock" }}
       - run:
-          name: Install Packages
+          name: Run build
           command: yarn build
 
 
