@@ -6,6 +6,7 @@ jobs:
     steps:
       - checkout
       - save_cache:
+          name: Save code in cache
           key: code-{{ .Environment.CIRCLE_SHA1 }}
           paths:
             - ./
@@ -15,16 +16,17 @@ jobs:
       - image: saphyel/node:8.10-alpine
     steps:
       - restore_cache:
+          name: Checkout code
           keys:
             - code-{{ .Environment.CIRCLE_SHA1 }}
       - restore_cache:
-          name: Restore Yarn Package Cache
+          name: Restore Yarn package cache
           key: modules-{{ checksum "yarn.lock" }}
       - run:
           name: Install Packages
           command: yarn install --cache-folder ~/.cache/yarn
       - save_cache:
-          name: Save Yarn Package Cache
+          name: Save Yarn package cache
           key: modules-{{ checksum "yarn.lock" }}
           paths:
             - ./node_modules
@@ -35,13 +37,14 @@ jobs:
       - image: saphyel/node:8.10-alpine
     steps:
       - restore_cache:
+          name: Checkout code
           keys:
             - code-{{ .Environment.CIRCLE_SHA1 }}
       - restore_cache:
-          name: Restore Yarn Package Cache
+          name: Restore Yarn package cache
           key: modules-{{ checksum "yarn.lock" }}
       - run:
-          name: Run tests
+          name: Run unit tests
           command: yarn test --ci --coverage
 
   deploy:
@@ -49,32 +52,44 @@ jobs:
       - image: saphyel/node:8.10-alpine
     steps:
       - restore_cache:
+          name: Checkout code
           keys:
             - code-{{ .Environment.CIRCLE_SHA1 }}
       - restore_cache:
-          name: Restore Yarn Package Cache
+          name: Restore Yarn package cache
           key: modules-{{ checksum "yarn.lock" }}
       - run:
-          name: Run build
+          name: Create an optimized production build
           command: yarn build
+      - run:
+          name: Deploy to github
+          command: yarn deploy
+
 
 workflows:
   version: 2
-  pipeline:
+  build_and_test:
     jobs:
-      - checkout_code
+      - checkout_code:
+          filters:
+            branches:
+              ignore: gh-pages
       - build:
           requires:
             - checkout_code
       - test:
           requires:
             - build
-          filters:
-            branches:
-              ignore: master
-      - deploy:
-          requires:
-            - build
+
+  build_and_deploy:
+    jobs:
+      - checkout_code:
           filters:
             branches:
               only: master
+      - build:
+          requires:
+            - checkout_code
+      - deploy:
+          requires:
+            - build
