@@ -3,6 +3,7 @@ version: '3'
 services:
   app:
     image: node:8.10-alpine
+    image: saphyel/node:8.10-alpine
     volumes:
       - ./:/var/www:cached
       - ~/.ssh/id_rsa:/root/.ssh/id_rsa:cached
