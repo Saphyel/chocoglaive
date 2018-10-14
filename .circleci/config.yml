@@ -6,7 +6,7 @@ jobs:
     steps:
       - checkout
       - save_cache:
-          key: code
+          key: code-{{ .Environment.CIRCLE_SHA1 }}
           paths:
             - ./
 
@@ -16,7 +16,7 @@ jobs:
     steps:
       - restore_cache:
           keys:
-            - code
+            - code-{{ .Environment.CIRCLE_SHA1 }}
       - restore_cache:
           name: Restore Yarn Package Cache
           key: modules-{{ checksum "yarn.lock" }}
@@ -36,7 +36,7 @@ jobs:
     steps:
       - restore_cache:
           keys:
-            - code
+            - code-{{ .Environment.CIRCLE_SHA1 }}
       - restore_cache:
           name: Restore Yarn Package Cache
           key: modules-{{ checksum "yarn.lock" }}
@@ -50,7 +50,7 @@ jobs:
     steps:
       - restore_cache:
           keys:
-            - code
+            - code-{{ .Environment.CIRCLE_SHA1 }}
       - restore_cache:
           name: Restore Yarn Package Cache
           key: modules-{{ checksum "yarn.lock" }}
