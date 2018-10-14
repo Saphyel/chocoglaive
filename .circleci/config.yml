@@ -21,6 +21,9 @@ jobs:
       - image: node:8.10-alpine
     steps:
       - checkout
+      - restore_cache:
+          name: Restore Yarn Package Cache
+          key: packages-{{ checksum "yarn.lock" }}
       - run:
           name: Install Packages
           command: yarn test
@@ -29,6 +32,9 @@ deploy:
     - image: node:8.10-alpine
   steps:
     - checkout
+    - restore_cache:
+        name: Restore Yarn Package Cache
+        key: packages-{{ checksum "yarn.lock" }}
     - run:
         name: Install Packages
         command: yarn build
@@ -43,7 +49,6 @@ workflows:
             - build
   build_and_deploy:
     jobs:
-      - build
       - deploy:
           requires:
             - build
