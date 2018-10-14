@@ -1,23 +1,10 @@
 version: 2
 jobs:
-  checkout_code:
-    docker:
-      - image: node:8.10-alpine
-    working_directory: /var/www
-    steps:
-      - checkout
-      - save_cache:
-          key: code-{{ .Environment.CIRCLE_SHA1 }}
-          paths:
-            - /var/www
-
   build:
     docker:
       - image: node:8.10-alpine
     steps:
-      - restore_cache:
-          keys:
-            - code-{{ .Environment.CIRCLE_SHA1 }}
+      - checkout
       - restore_cache:
           name: Restore Yarn Package Cache
           key: packages-{{ checksum "yarn.lock" }}
@@ -34,9 +21,7 @@ jobs:
     docker:
       - image: node:8.10-alpine
     steps:
-      - restore_cache:
-          keys:
-            - code-{{ .Environment.CIRCLE_SHA1 }}
+      - checkout
       - restore_cache:
           name: Restore Yarn Package Cache
           key: packages-{{ checksum "yarn.lock" }}
@@ -48,9 +33,7 @@ jobs:
     docker:
       - image: node:8.10-alpine
     steps:
-      - restore_cache:
-          keys:
-            - code-{{ .Environment.CIRCLE_SHA1 }}
+      - checkout
       - restore_cache:
           name: Restore Yarn Package Cache
           key: packages-{{ checksum "yarn.lock" }}
@@ -62,22 +45,17 @@ workflows:
   version: 2
   build_and_test:
     jobs:
-      - checkout_code
-      - build:
-          requires:
-            - checkout_code
+      - build
       - test:
           requires:
             - build
+
   build_and_deploy:
     jobs:
-      - checkout_code:
+      - build::
           filters:
             branches:
               only: master
-      - build:
-          requires:
-            - checkout_code
       - deploy:
           requires:
             - build
