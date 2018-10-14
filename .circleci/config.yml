@@ -3,7 +3,6 @@ jobs:
   checkout_code:
     docker:
       - image: saphyel/node:8.10-alpine
-    working_directory: /var/www
     steps:
       - checkout
       - save_cache:
