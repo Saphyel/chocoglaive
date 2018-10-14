@@ -43,6 +43,8 @@ jobs:
       - run:
           name: Run tests
           command: yarn test --ci --coverage
+      - store_test_results:
+          path: ./coverage
 
   deploy:
     docker:
