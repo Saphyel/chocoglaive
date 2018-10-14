@@ -20,14 +20,15 @@ jobs:
             - code
       - restore_cache:
           name: Restore Yarn Package Cache
-          key: packages-{{ checksum "yarn.lock" }}
+          key: modules-{{ checksum "yarn.lock" }}
       - run:
           name: Install Packages
-          command: yarn install
+          command: yarn install --cache-folder ~/.cache/yarn
       - save_cache:
           name: Save Yarn Package Cache
-          key: packages-{{ checksum "yarn.lock" }}
+          key: modules-{{ checksum "yarn.lock" }}
           paths:
+            - ./node_modules
             - ~/.cache/yarn
 
   test:
@@ -39,7 +40,7 @@ jobs:
             - code
       - restore_cache:
           name: Restore Yarn Package Cache
-          key: packages-{{ checksum "yarn.lock" }}
+          key: modules-{{ checksum "yarn.lock" }}
       - run:
           name: Install Packages
           command: yarn test
@@ -53,7 +54,7 @@ jobs:
             - code
       - restore_cache:
           name: Restore Yarn Package Cache
-          key: packages-{{ checksum "yarn.lock" }}
+          key: modules-{{ checksum "yarn.lock" }}
       - run:
           name: Install Packages
           command: yarn build
